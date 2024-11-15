@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\OrderController;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,6 +58,6 @@ Route::get('/orderDeleteItem/{id}/{item}',[OrderController::class,'orderDeleteIt
 
 Route::get('/orderEditItem/{id}',[OrderController::class,'orderEditItem'])->name('orderEditItem');
 
-
+Route::get('/users',[UserController::class,'index'])->name('users.index');
 
 Route::get('/monitoring',[MonitoringController::class,'index'])->name('monitoring');
