@@ -18,7 +18,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index',['title'=>'Dashboard']);
 });
 
 Auth::routes();
@@ -59,5 +59,11 @@ Route::get('/orderDeleteItem/{id}/{item}',[OrderController::class,'orderDeleteIt
 Route::get('/orderEditItem/{id}',[OrderController::class,'orderEditItem'])->name('orderEditItem');
 
 Route::get('/users',[UserController::class,'index'])->name('users.index');
+
+Route::get('/users/add',[UserController::class,'add'])->name('users.add');
+
+Route::get('/user/{id}',[UserController::class,'show'])->name('users.show');
+
+Route::get('/user/{id}/edit',[UserController::class,'edit'])->name('users.edit');
 
 Route::get('/monitoring',[MonitoringController::class,'index'])->name('monitoring');

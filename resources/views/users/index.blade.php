@@ -9,6 +9,7 @@
       <th scope="col">email</th>
       <th scope="col">Role</th>
       <th scope="col">Shop</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -20,8 +21,15 @@
  
       <td>{{$user->role}}</td>
       <td>{{$user->shop}}</td>
+      <td>
+        <div class="btn-group" aria-label="Basic example">
+            <a href="{{route('users.edit',['id'=>$user->id])}}" type="button" class="btn btn-primary">Edit</a>
+            <a type="button" class="btn btn-danger">Delete</a>
+            
+        </div>
+      </td>
     </tr>
-    
+    @endforeach
   </tbody>
 </table>
 
