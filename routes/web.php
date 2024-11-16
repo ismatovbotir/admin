@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ShopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,24 +20,26 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('index',['title'=>'Dashboard']);
-});
+})->name('main');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/price', [App\Http\Controllers\HomeController::class, 'index'])->name('price');
+Route::get('/price', [HomeController::class, 'index'])->name('price');
 
-Route::get('/item', [App\Http\Controllers\HomeController::class, 'item'])->name('item');
+Route::get('/item', [HomeController::class, 'item'])->name('item');
 
-Route::get('/additem', [App\Http\Controllers\HomeController::class, 'additem'])->name('additem');
+Route::get('/additem', [HomeController::class, 'additem'])->name('additem');
 
-Route::get('/dellitem', [App\Http\Controllers\HomeController::class, 'dellitem'])->name('dellitem');
+Route::get('/dellitem', [HomeController::class, 'dellitem'])->name('dellitem');
 
 
-Route::get('/load1c',[App\Http\Controllers\HomeController::class, 'load1c'])->name('load1c');
+Route::get('/load1c',[HomeController::class, 'load1c'])->name('load1c');
 
 Route::get('/orders',[OrderController::class,'orders'])->name('orders');
+
+
 
 Route::get('/order/{id}',[OrderController::class,'order'])->name('order');
 
@@ -66,4 +69,11 @@ Route::get('/user/{id}',[UserController::class,'show'])->name('users.show');
 
 Route::get('/user/{id}/edit',[UserController::class,'edit'])->name('users.edit');
 
+Route::get('/shops',[ShopController::class,'index'])->name('shops.index');
+
+Route::get('/shops',[ShopController::class,'update'])->name('shops.update');
+
+
 Route::get('/monitoring',[MonitoringController::class,'index'])->name('monitoring');
+
+Route::get('/logout',[HomeController::class,'logout'])->name('logout');

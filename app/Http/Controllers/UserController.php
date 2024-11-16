@@ -9,8 +9,8 @@ class UserController extends Controller
 {
     public function index(){
         $title='Users';
-        $users=User::get();
-        //dd($users);
+        $users=User::with('role')->with('shop')->get();
+        dd($users);
         return view('users.index',compact('title','users'));
     }
     public function add(){

@@ -2,7 +2,7 @@
 <html lang="ru" class="js">
 @section('head')
 <head>
-    <base href="../">
+    <base href="/">
     <meta charset="utf-8">
     <meta name="author" content="Softnio">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,8 +12,8 @@
     <!-- Page Title  -->
     <title>{{isset($title)?$title:'Title'}}</title>
     <!-- StyleSheets  -->
-    <link rel="stylesheet" href="./assets/css/dashlite.css?ver=2.4.0">
-    <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=2.4.0">
+    <link rel="stylesheet" href="/assets/css/dashlite.css?ver=2.4.0">
+    <link id="skin-default" rel="stylesheet" href="/assets/css/theme.css?ver=2.4.0">
 </head>
 @show
 <body class="nk-body bg-lighter npc-general has-sidebar ">
@@ -38,8 +38,8 @@
                             </div>
                             <div class="nk-header-brand d-xl-none">
                                 <a href="html/index.html" class="logo-link">
-                                    <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
-                                    <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
+                                    <img class="logo-light logo-img" src="/images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
+                                    <img class="logo-dark logo-img" src="/images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                                 </a>
                             </div><!-- .nk-header-brand -->
                             <div class="nk-header-news d-none d-xl-block">
@@ -91,7 +91,7 @@
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                                                    <li><a href="{{route('logout')}}"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
                                                 </ul>
                                             </div>
                                         </div>

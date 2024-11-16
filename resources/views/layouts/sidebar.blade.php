@@ -49,18 +49,18 @@
                                     <h6 class="overline-title text-primary-alt">Administration</h6>
                                 </li><!-- .nk-menu-heading -->
                                 <li class="nk-menu-item has-sub">
-                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                    <a href="{{route('shops.index')}}" class="nk-menu-link ">
                                         <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
                                         <span class="nk-menu-text">Shops</span>
                                     </a>
-                                    <ul class="nk-menu-sub">
+                                    {{--<ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
                                             <a href="html/project-card.html" class="nk-menu-link"><span class="nk-menu-text">Project Cards</span></a>
                                         </li>
                                         <li class="nk-menu-item">
                                             <a href="html/project-list.html" class="nk-menu-link"><span class="nk-menu-text">Project List</span></a>
                                         </li>
-                                    </ul><!-- .nk-menu-sub -->
+                                    </ul><!-- .nk-menu-sub -->--}}
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
