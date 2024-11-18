@@ -29,7 +29,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="email-address-1">Name</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="name" name="name">
+                                        <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
                                     </div>
                                 </div>
                             </div>
@@ -55,10 +55,12 @@
                                     <label class="form-label" for="default-06">Role</label>
                                     <div class="form-control-wrap ">
                                         <div class="form-control-select">
-                                            <select class="form-control" id="role" name="role_id">
-                                                <option value="0">Default Option</option>
-                                                <option value="1">Option select name</option>
-                                                <option value="2">Option select name</option>
+                                            <select class="form-control" id="role" name="role">
+                                            @foreach($roles as $role)
+                                                    <option value="0"></option>
+                                                    <option value="{{$role->id}}">{{$role->name}}</option>
+                                                
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -71,10 +73,13 @@
                                     <label class="form-label" for="default-06">Shop</label>
                                     <div class="form-control-wrap ">
                                         <div class="form-control-select">
-                                            <select class="form-control" id="shop" name="shop_id">
-                                                <option value="0">Default Option</option>
-                                                <option value="option_select_name">Option select name</option>
-                                                <option value="option_select_name">Option select name</option>
+                                            <select class="form-control" id="shop" name="shop">
+                                            <option value="0"></option>
+                                                @foreach($shops as $shop)
+                                                    
+                                                    <option value="{{$shop->id}}">{{$shop->shop_name}}</option>
+                                                
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

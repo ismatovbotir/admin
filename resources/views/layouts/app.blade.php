@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru" class="js">
 @section('head')
+
 <head>
     <base href="/">
     <meta charset="utf-8">
@@ -16,6 +17,7 @@
     <link id="skin-default" rel="stylesheet" href="/assets/css/theme.css?ver=2.4.0">
 </head>
 @show
+
 <body class="nk-body bg-lighter npc-general has-sidebar ">
     <div class="nk-app-root">
         <!-- main @s -->
@@ -28,9 +30,9 @@
             <!-- wrap @s -->
             <div class="nk-wrap ">
                 <!-- main header @s -->
-               
+
                 <div class="nk-header nk-header-fixed is-light">
-                @section('contentHeader')    
+                    @section('contentHeader')
                     <div class="container-fluid">
                         <div class="nk-header-wrap">
                             <div class="nk-menu-trigger d-xl-none ml-n1">
@@ -65,7 +67,11 @@
                                                 </div>
                                                 <div class="user-info d-none d-md-block">
                                                     <div class="user-status">Administrator</div>
-                                                    <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
+                                                    <div class="user-name dropdown-indicator">
+                                                        @auth
+                                                            {{Auth::user()->name}}
+                                                        @endauth
+                                                    </div>
                                                 </div>
                                             </div>
                                         </a>
@@ -76,8 +82,15 @@
                                                         <span>AB</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                        <span class="sub-text">info@softnio.com</span>
+                                                        <span class="lead-text"> 
+                                                        @auth
+                                                            {{Auth::user()->name}}
+                                                        @endauth</span>
+                                                        <span class="sub-text">
+                                                        @auth
+                                                            {{Auth::user()->email}}
+                                                        @endauth
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -172,14 +185,14 @@
                             </div><!-- .nk-header-tools -->
                         </div><!-- .nk-header-wrap -->
                     </div><!-- .container-fliud -->
-                @show
+                    @show
                 </div>
-               
+
                 <!-- main header @e -->
                 <!-- content @s -->
                 <div class="nk-content ">
-                 @section('contentBody')   
-                     <div class="container-fluid">
+                    @section('contentBody')
+                    <div class="container-fluid">
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
                                 <div class="nk-block-head nk-block-head-sm">
@@ -834,7 +847,7 @@
                             </div>
                         </div>
                     </div>
-                @show
+                    @show
                 </div>
                 <!-- content @e -->
                 <!-- footer @s -->

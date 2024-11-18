@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
+use App\Models\Shop;
 use App\Models\Adines;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -17,9 +21,12 @@ class UserController extends Controller
     }
     public function add(){
         $title='New User';
+        $roles=Role::where('id','!=',1)->get();
+        $shops=Shop::get();
         
+        //dd($shops);        
         //dd($users);
-        return view('users.add',compact('title'));
+        return view('users.add',compact('title','roles','shops'));
     }
     public function edit(){
         $title='User Edit';
@@ -30,20 +37,28 @@ class UserController extends Controller
         return view('users.show',compact('title'));
     }
 
-    public function store(Request $request){
+    public function store(UserRequest $request){
         //dd($request->all());
-        $validation=$request->validate([
-           'name'=>'required|min:5|max:20',
-           'email'=>'required',
-           'password'=>'required|min:6',
-           'role_id'=>'required',
-           'shop_id'=>'required'
+        // $validation=$request->validate([
+        //    'name'=>'required|min:5|max:20',
+        //    'email'=>'required',
+        //    'password'=>'required|min:6',
+        //    'role_id'=>'required',
+        //    'shop_id'=>'required'
 
+           //dd((int)$request->input('shop'));
 
-
-        ]);
+        // ]);
+        User::create([
+            'name'=>$request->input('name'),
+            'email'=>$request->input('email'),
+            'password'=>Hash::make($request->input('password')),
+            'role_id'=>2,//(int)$request->input('role'),
+            'shop_id'=>1,//(int)$request->input('shop'),
+            'active'=>true    
         
+        ]);
 
-
+        return redirect()->route('users.index');
     }
 }
