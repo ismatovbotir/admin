@@ -20,18 +20,12 @@
     @foreach($shops as $idx=>$shop)
     <tr>
       <th scope="row">{{$idx}}</th>
-      <td>{{$user->name}}</td>
-      <td>{{$user->email}}</td>
+      <td>{{$shop->shop_name}}</td>
+      <td>{{$shop->shop_code}}</td>
  
-      <td>{{$user->role}}</td>
-      <td>{{$user->shop}}</td>
-      <td>
-        <div class="btn-group" aria-label="Basic example">
-            <a href="{{route('users.edit',['id'=>$user->id])}}" type="button" class="btn btn-primary">Edit</a>
-            <a type="button" class="btn btn-danger">Delete</a>
-            
-        </div>
-      </td>
+      <td>{{$shop->price_name}}</td>
+      <td>{{$shop->price_code}}</td>
+      
     </tr>
     @endforeach
   </tbody>

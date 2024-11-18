@@ -7,6 +7,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\AdinesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,10 +70,16 @@ Route::get('/user/{id}',[UserController::class,'show'])->name('users.show');
 
 Route::get('/user/{id}/edit',[UserController::class,'edit'])->name('users.edit');
 
+Route::post('/user/add',[UserController::class,'store'])->name('users.store');
+
+
+
+
 Route::get('/shops',[ShopController::class,'index'])->name('shops.index');
 
-Route::get('/shops',[ShopController::class,'update'])->name('shops.update');
+Route::get('/shops/update',[ShopController::class,'update'])->name('shops.update');
 
+Route::get('/adines',[AdinesController::class,'index'])->name('adines.index');
 
 Route::get('/monitoring',[MonitoringController::class,'index'])->name('monitoring');
 

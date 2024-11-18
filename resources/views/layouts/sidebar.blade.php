@@ -78,18 +78,18 @@
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item has-sub">
-                                    <a href="#" class="nk-menu-link nk-menu-toggle">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span>
+                                    <a href="{{route('adines.index')}}" class="nk-menu-link ">
+                                      
                                         <span class="nk-menu-text">1C</span>
                                     </a>
-                                    <ul class="nk-menu-sub">
+                                    {{--<ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
                                             <a href="html/transaction-basic.html" class="nk-menu-link"><span class="nk-menu-text">Tranx List - Basic</span></a>
                                         </li>
                                         <li class="nk-menu-item">
                                             <a href="html/transaction-crypto.html" class="nk-menu-link"><span class="nk-menu-text">Tranx List - Crypto</span></a>
                                         </li>
-                                    </ul><!-- .nk-menu-sub -->
+                                    </ul><!-- .nk-menu-sub -->--}}
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item has-sub">
                                {{-- <li class="nk-menu-item has-sub">

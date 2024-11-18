@@ -15,11 +15,11 @@
   <tbody>
     @foreach($users as $idx=>$user)
     <tr>
-      <th scope="row">{{$idx}}</th>
+      <th scope="row">{{$idx+1}}</th>
       <td>{{$user->name}}</td>
       <td>{{$user->email}}</td>
  
-      <td>{{$user->role}}</td>
+      <td>{{$user->role->name}}</td>
       <td>{{$user->shop}}</td>
       <td>
         <div class="btn-group" aria-label="Basic example">
