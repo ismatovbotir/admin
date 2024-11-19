@@ -53,8 +53,8 @@ class UserController extends Controller
             'name'=>$request->input('name'),
             'email'=>$request->input('email'),
             'password'=>Hash::make($request->input('password')),
-            'role_id'=>2,//(int)$request->input('role'),
-            'shop_id'=>1,//(int)$request->input('shop'),
+            'role_id'=>$request->input('role'),
+            'shop_id'=>$request->input('shop'),
             'active'=>true    
         
         ]);

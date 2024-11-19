@@ -19,7 +19,7 @@
   <tbody>
     @foreach($shops as $idx=>$shop)
     <tr>
-      <th scope="row">{{$idx}}</th>
+      <th scope="row">{{$idx+1}}</th>
       <td>{{$shop->shop_name}}</td>
       <td>{{$shop->shop_code}}</td>
  

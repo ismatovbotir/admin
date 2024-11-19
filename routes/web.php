@@ -21,7 +21,7 @@ use App\Http\Controllers\AdinesController;
 
 Route::get('/', function () {
     return view('index',['title'=>'Dashboard']);
-})->name('main');
+})->middleware('auth')->name('main');
 
 Auth::routes();
 

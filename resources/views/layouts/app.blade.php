@@ -39,7 +39,7 @@
                                 <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                             </div>
                             <div class="nk-header-brand d-xl-none">
-                                <a href="html/index.html" class="logo-link">
+                                <a href="{{route('main')}}" class="logo-link">
                                     <img class="logo-light logo-img" src="/images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
                                     <img class="logo-dark logo-img" src="/images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                                 </a>
@@ -66,7 +66,12 @@
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-info d-none d-md-block">
-                                                    <div class="user-status">Administrator</div>
+                                                    <div class="user-status">
+                                                    @auth
+                                                            {{Auth::user()->role->name}}
+                                                        @endauth
+                                                    
+                                                    </div>
                                                     <div class="user-name dropdown-indicator">
                                                         @auth
                                                             {{Auth::user()->name}}

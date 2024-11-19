@@ -20,7 +20,7 @@
       <td>{{$user->email}}</td>
  
       <td>{{$user->role->name}}</td>
-      <td>{{$user->shop}}</td>
+      <td>{{$user->shop->shop_name}}</td>
       <td>
         <div class="btn-group" aria-label="Basic example">
             <a href="{{route('users.edit',['id'=>$user->id])}}" type="button" class="btn btn-primary">Edit</a>
