@@ -93,7 +93,7 @@ class PriceController extends Controller
     {
         $id = $request->input('id');
         $item = PriceList::where('id', $id)->delete();
-        return redirect('price.index');
+        return redirect()->route('price.index');
     }
     public function load1c(Request $request)
     {
