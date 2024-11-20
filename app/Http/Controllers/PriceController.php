@@ -34,7 +34,7 @@ class PriceController extends Controller
             $tableData=PriceList::where('user_id',Auth::user()->id)->get();
             //dd($tableData);
         }
-        return view('home',['content'=>$content,'tableData'=>$tableData]);
+        return view('price.index',['content'=>$content,'tableData'=>$tableData]);
     }
 
     public function item(Request $request){

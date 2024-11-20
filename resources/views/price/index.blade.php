@@ -1,14 +1,10 @@
 @extends('layouts.app')
 
 @section('contentBody')
-
+    
 <div class="nk-content-body">
     <div class="components-preview wide-md mx-auto">
-
-
         <div class="nk-block nk-block-lg">
-       <div class="row justify-content-center">
-        <div class="col-md-8">
         @if($content=='home')
             <div class="card">
                 <div class="card-header">
@@ -21,6 +17,7 @@
                             </button>
                              <a href="{{route('price.load1c')}}" class="btn btn-outline-warning" type="button" id="button-addon2">1c
                             </a>
+                        </div>
                     </form>
                 </div>
                 @if(count($tableData)>0)
@@ -60,13 +57,9 @@
                     <p class="card-text">Sizning profilingizga supermarket biriktirilmagan ekan</p>
                 </div>
             </div>
-            @endif
-        </div>
-</div>
+        @endif
         </div><!-- .nk-block -->
 
     </div><!-- .components-preview -->
 </div>
-
-
 @endsection

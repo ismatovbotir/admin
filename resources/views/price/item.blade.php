@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
 @section('contentBody')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+
+<div class="nk-content-body">
+    <div class="components-preview wide-md mx-auto">
+
+
+        <div class="nk-block nk-block-lg">
             <div class="card">
                 <div class="card-header">
                     {{$data['name'] }} - {{ $data['qty']}}    
