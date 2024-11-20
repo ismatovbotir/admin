@@ -21,7 +21,7 @@
                                         <span class="nk-menu-text">Monitoring</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                @if (Auth::user()->role->name=='Admin' ||  Auth::user()->role->name=='Price')
+                                @if ( Auth::user()->role->name=='Price')
                                 <li class="nk-menu-item">
                                     <a href="{{route('price.index')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-bitcoin-cash"></em></span>
