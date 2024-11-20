@@ -27,9 +27,9 @@
                                 <input type="hidden" class="form-control" id="code" name="code" value="{{$data['code']}}" >    
                             </div>
                             <div class="col-7">
-                                @if ($role=='order')
+                                @if ($role=='Order')
                                 <input type="number" class="form-control" id="qty" name="qty" placeholder="{{$data['qty']}}" autofocus>
-                                @elseif($role=='collect')
+                                @elseif($role=='Collect')
                                 <input type="number" class="form-control" id="qty" name="qty" placeholder="{{$data['qty']}}-{{$data['qty_done']}}" value="{{$data['qty']}}" autofocus>
                                 @endif
                                 <input type="hidden"  name="name" value="{{$data['name']}}">
