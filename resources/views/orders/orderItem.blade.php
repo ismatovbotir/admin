@@ -13,9 +13,9 @@
 
                 <div class="card-body">
                     @if ($role=='order')
-                    <form method="post" action="{{route('orderAddItem',['id'=>$id])}}" class="row row-cols-lg-auto g-3 align-items-center"  >
+                    <form method="post" action="{{route('orders.add.item',['id'=>$id])}}" class="row row-cols-lg-auto g-3 align-items-center"  >
                     @elseif($role=='collect')
-                    <form method="post" action="{{route('collectAddItem',['id'=>$id])}}" class="row row-cols-lg-auto g-3 align-items-center"  >
+                    <form method="post" action="{{route('collect.add.item',['id'=>$id])}}" class="row row-cols-lg-auto g-3 align-items-center"  >
                     @endif
                         <div class="col-12">
                             <h2>{{$data['name']}}</h2>
