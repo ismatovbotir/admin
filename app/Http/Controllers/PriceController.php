@@ -87,7 +87,7 @@ class PriceController extends Controller
 
 
         ]);
-        return redirect('price.index');
+        return redirect()->route('price.index');
     }
     public function dellitem(Request $request)
     {
