@@ -44,7 +44,7 @@ class PriceController extends Controller
         $price_code = Auth::user()->shop->price_code;
         $ware_code = Auth::user()->shop->ware_code;
         if ($barcode == null) {
-            return redirect('price.index');
+            return redirect()->route('price.index');
         }
         $adines = Adines::first();
         //dd($adines);
@@ -64,7 +64,7 @@ class PriceController extends Controller
 
                 return view('price.item', ["data" => $res['data']]);
             }
-        }else{
+        } else {
             return redirect()->route('price.index')->withErrors('1c Server Connection error');
         }
     }
@@ -114,19 +114,24 @@ class PriceController extends Controller
                 "code" => Auth::user()->shop->price_code,
                 "productList" => $products
             );
+            $adines = Adines::first();
+            $auth = base64_encode($adines->login . ':' . $adines->password);
+
             $response = Http::withHeaders([
-                'Authorization' => 'Basic YWRtaW46NTU1NTU1',
+                'Authorization' => 'Basic ' . $auth,
                 'Cache-Control' => 'no-cache',
                 'Content-Type' => 'application/json'
 
-            ])->withBody(json_encode($data))->post('192.168.1.201/new/hs/pricelist');
-            $res = $response->json();
-            if ($res["status"] == "ok") {
-                $del = PriceList::where('user_id', Auth::user()->id)->delete();
+            ])->withBody(json_encode($data))->post($adines->adress . 'pricelist');
+            if ($response->successful()) {
+                $res = $response->json();
+                if ($res["status"] == "ok") {
+                    $del = PriceList::where('user_id', Auth::user()->id)->delete();
+                }
+                return redirect()->route('price.index');
+            } else {
+                return redirect()->route('price.index');
             }
-            return redirect('price');
-        } else {
-            return redirect('price');
         }
     }
     public function logout()
