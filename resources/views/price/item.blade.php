@@ -20,7 +20,7 @@
                         <input type="text" name="price" value="{{$data['price']}}" hidden>
                         <input type="text" name="barcode" value="{{$data['barcode']}}" hidden>
                         <input type="text" name="name" value="{{$data['name']}}" hidden>
-                        <input type="number" name="qty" placeholder="Qty of pricetag">
+                        <input type="number" name="qty" placeholder="Qty of pricetag"><br>
                         <a href="{{route('price.index')}}" class="btn btn-success">Narx To'g'ri</a>
                         <button type="submit" class="btn btn-danger">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
