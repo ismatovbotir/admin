@@ -12,9 +12,9 @@
                 </div>
 
                 <div class="card-body">
-                    @if ($role=='order')
+                    @if ($role=='Order')
                     <form method="post" action="{{route('orders.add.item',['id'=>$id])}}" class="row row-cols-lg-auto g-3 align-items-center"  >
-                    @elseif($role=='collect')
+                    @elseif($role=='Collect')
                     <form method="post" action="{{route('collect.add.item',['id'=>$id])}}" class="row row-cols-lg-auto g-3 align-items-center"  >
                     @endif
                         <div class="col-12">
