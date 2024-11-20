@@ -15,32 +15,39 @@
                     <div class="nk-sidebar-content">
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
-                                <li class="nk-menu-item">
+                                <li class="nk-menu-item active current-page">
                                     <a href="{{route('main')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
                                         <span class="nk-menu-text">Monitoring</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
+                                @if (Auth::user()->role->name=='Price' ||  Auth::user()->role->name=='Admin')
                                 <li class="nk-menu-item">
                                     <a href="{{route('price.index')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-bitcoin-cash"></em></span>
                                         <span class="nk-menu-text">Price</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
+                                @endif
+                                @if (Auth::user()->role->name=='Admin' ||  Auth::user()->role->name=='Order')
                                 <li class="nk-menu-item">
                                     <a href="{{route('orders.index')}}" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-growth"></em></span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-list"></em></span>
                                         <span class="nk-menu-text">Order</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
+                                @endif
+                                @if (Auth::user()->role->name=='Admin' ||  Auth::user()->role->name=='Collect')
                                 <li class="nk-menu-item">
                                     <a href="{{route('orders.index')}}" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-list"></em></span>
                                         <span class="nk-menu-text">Collect</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
+                                @endif
+                               
                                 <li class="nk-menu-item">
-                                    <a href="{{route('orders.index')}}" class="nk-menu-link">
+                                    <a href="{{route('orders.ready')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
                                         <span class="nk-menu-text">Ready</span>
                                     </a>

@@ -48,6 +48,9 @@ Route::group(['middleware'=>'auth','prefix'=>'orders','as'=>'orders.'],function(
 
     Route::get('/create',[OrderController::class,'orderCreate'])->name('create');
 
+    Route::get('/ready',[OrderController::class,'readyOrders'])->name('ready');
+
+    
     Route::get('/edit/item/{id}',[OrderController::class,'orderEditItem'])->name('edit.item');
 
     Route::get('/{id}',[OrderController::class,'order'])->name('show');

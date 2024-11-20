@@ -32,6 +32,19 @@ class OrderController extends Controller
         );
     } 
 
+    public function readyorders(){
+      
+
+        $user=Auth::user()->id;
+        $shop=Auth::user()->shop->id;
+        $role=Auth::user()->role->name;
+        
+            $orders=Order::withCount('items')->where('user_id',$user)->whereIn('status',['ready'])->orderBy('updated_at','desc')->get();
+        //return $orders;
+        return view('orders.index',['orders'=>$orders,'author'=>Auth::user()->name,'role'=>$role]
+        );
+    } 
+
     public function order($id){
         $role=Auth::user()->role->name;
         

@@ -23,9 +23,11 @@
         <!-- main @s -->
         <div class="nk-main ">
             <!-- sidebar @s -->
-            @section('sidebar')
-            @include('layouts.sidebar')
-            @show
+            @auth
+                @section('sidebar')
+                    @include('layouts.sidebar')
+                @show
+            @endauth
             <!-- sidebar @e -->
             <!-- wrap @s -->
             <div class="nk-wrap ">
@@ -51,7 +53,9 @@
                                             <em class="icon ni ni-card-view"></em>
                                         </div>
                                         <div class="nk-news-text">
-                                            <p>Do you know the latest update of 2019? <span> A overview of our is now available on YouTube</span></p>
+                                            @auth
+                                            <p>{{Auth::user()->shop->shop_name}}<span> {{Auth::user()->shop->price_name}}</span></p>
+                                            @endauth
                                             <em class="icon ni ni-external"></em>
                                         </div>
                                     </a>
@@ -101,10 +105,12 @@
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="html/user-profile-regular.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
+                                                    {{--
+                                                        <li><a href="html/user-profile-regular.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
                                                     <li><a href="html/user-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
                                                     <li><a href="html/user-profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li>
                                                     <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
+                                                    --}}
                                                 </ul>
                                             </div>
                                             <div class="dropdown-inner">
@@ -114,7 +120,7 @@
                                             </div>
                                         </div>
                                     </li><!-- .dropdown -->
-                                    <li class="dropdown notification-dropdown mr-n1">
+                                    {{--<li class="dropdown notification-dropdown mr-n1">
                                         <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-toggle="dropdown">
                                             <div class="icon-status icon-status-info"><em class="icon ni ni-bell"></em></div>
                                         </a>
@@ -185,7 +191,7 @@
                                                 <a href="#">View All</a>
                                             </div>
                                         </div>
-                                    </li><!-- .dropdown -->
+                                    </li><!-- .dropdown -->--}}
                                 </ul><!-- .nk-quick-nav -->
                             </div><!-- .nk-header-tools -->
                         </div><!-- .nk-header-wrap -->
@@ -860,14 +866,19 @@
                 <div class="nk-footer">
                     <div class="container-fluid">
                         <div class="nk-footer-wrap">
-                            <div class="nk-footer-copyright"> &copy; 2020 DashLite. Template by <a href="https://softnio.com" target="_blank">Softnio</a>
+                            <div class="nk-footer-copyright">{{--
+                                &copy; 2020 DashLite. Template by <a href="https://softnio.com" target="_blank">Softnio</a>
+                                --}} 
                             </div>
                             <div class="nk-footer-links">
+                              {{--
                                 <ul class="nav nav-sm">
                                     <li class="nav-item"><a class="nav-link" href="#">Terms</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
                                 </ul>
+                                
+                                --}}  
                             </div>
                         </div>
                     </div>
