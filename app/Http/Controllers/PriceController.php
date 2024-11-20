@@ -54,7 +54,7 @@ class PriceController extends Controller
             'Cache-Control' => 'no-cache',
             'Content-Type' => 'application/json'
 
-        ])->post($adines->adress . '/hs/item?code=' . $price_code . '&barcode=' . $barcode . '&ware=' . $ware_code);
+        ])->post($adines->adress . 'item?code=' . $price_code . '&barcode=' . $barcode . '&ware=' . $ware_code);
         if ($response->successful()) {
             $res = $response->json();
 
