@@ -75,12 +75,14 @@ class PriceController extends Controller
         $name = $request->input('name');
         $price = $request->input('price');
         $barcode = $request->input('barcode');
+        $qty = $request->input('qty');
         $user_id = Auth::user()->id;
         $price_code = Auth::user()->shop->price_code;
         $pricelist = PriceList::create([
             'user_id' => $user_id,
             'code' => $code,
             'price' => $price,
+            'qty' => $qty,
             'barcode' => $barcode,
             'name' => $name,
             'price_code' => $price_code
