@@ -21,14 +21,14 @@ class OrderController extends Controller
         $user=Auth::user()->id;
         $shop=Auth::user()->shop->id;
         $role=Auth::user()->role->name;
-        if($role=='order'){
+        if($role=='Order'){
 
-            $orders=Order::withCount('items')->where('user_id',$user)->whereIn('status',['new','ready'])->orderBy('updated_at','desc')->get();
-        }elseif($role=='collect'){
+            $orders=Order::withCount('items')->where('user_id',$user)->whereIn('status',['new'])->orderBy('updated_at','desc')->get();
+        }elseif($role=='Collect'){
             $orders=Order::withCount('items')->where('shop_id',$shop)->where('status','sent')->orderBy('created_at','desc')->get();
         }
         //return $orders;
-        return view('orders',['orders'=>$orders,'author'=>Auth::user()->name,'role'=>$role]
+        return view('orders.index',['orders'=>$orders,'author'=>Auth::user()->name,'role'=>$role]
         );
     } 
 
@@ -36,7 +36,8 @@ class OrderController extends Controller
         $role=Auth::user()->role->name;
         
         $orderItems=OrderItem::where('order_id',$id)->get();
-        return view('order',['id'=>$id,'orderItems'=>$orderItems,'role'=>$role]);
+        //dd('order');
+        return view('orders.order',['id'=>$id,'orderItems'=>$orderItems,'role'=>$role]);
     }
 
     public function orderCreate(){
@@ -56,7 +57,7 @@ class OrderController extends Controller
         $orderStatus->order_id=$order->id;
         $orderStatus->save();
 
-        return redirect()->route('order',['id'=>$order->id]);
+        return redirect()->route('orders.show',['id'=>$order->id]);
 
     }
 
@@ -81,7 +82,7 @@ class OrderController extends Controller
           'Cache-Control'=>'no-cache',
           'Content-Type'=>'application/json'
 
-      ])->post($adines->adress.'/hs/item?code='.$price_code.'&barcode='.$barcode.'&ware='.$ware_code);
+      ])->post($adines->adress.'item?code='.$price_code.'&barcode='.$barcode.'&ware='.$ware_code);
       //return $response;
       $res=$response->json();
       //dd($res);
@@ -89,7 +90,7 @@ class OrderController extends Controller
           return back();
       }else{
 
-        return view('orderItem',['data'=>$res['data'],'id'=>$id,'role'=>$role]);
+        return view('orders.orderItem',['data'=>$res['data'],'id'=>$id,'role'=>$role]);
       }  
        
     }
@@ -113,7 +114,7 @@ class OrderController extends Controller
        })->get();
        //return $orderItem->count();
         if($orderItem->count()==1){
-            return view('orderItem',['data'=>$orderItem[0],'id'=>$id,'role'=>$role]);
+            return view('orders.orderItem',['data'=>$orderItem[0],'id'=>$id,'role'=>$role]);
        }else{
             return back();
          
@@ -149,7 +150,7 @@ class OrderController extends Controller
         //return $orderItem;
         
         
-        return redirect()->route('order',['id'=>$id]);
+        return redirect()->route('orders.show',['id'=>$id]);
     }
 
     public function collectAddItem(Request $request,$id){
@@ -159,7 +160,7 @@ class OrderController extends Controller
         //$name=$request->input('name');
         //$barcode=$request->input('barcode');
         if($qty==0){
-            return redirect()->route('order',['id'=>$id]);
+            return redirect()->route('orders.show',['id'=>$id]);
         }
         $itemInOrder=OrderItem::where('order_id',$id)->where("code",$code)->get();
         if ($itemInOrder->count()==0){
@@ -169,7 +170,7 @@ class OrderController extends Controller
             OrderItem::where('id',$itemInOrder[0]->id)->update(["qty_done"=>$qty+$itemInOrder[0]->qty_done]);
         }
         //return $orderItem;
-        return redirect()->route('order',['id'=>$id]);
+        return redirect()->route('orders.show',['id'=>$id]);
     }
 
     public function orderStatus($id,$status){
@@ -190,7 +191,7 @@ class OrderController extends Controller
         $orderStatus->status=$status;
         $orderStatus->save();
 
-        return redirect()->route('orders');
+        return redirect()->route('orders.index');
 
     }
     public function orderDeleteItem($id,$item){
@@ -201,7 +202,7 @@ class OrderController extends Controller
         $role=Auth::user()->role->name;
         $item=OrderItem::where('id',$id)->get();
        //dd($item[0]);
-        return view('orderItem',['data'=>$item[0],'id'=>$item[0]->order_id,'role'=>$role]);
+        return view('orders.orderItem',['data'=>$item[0],'id'=>$item[0]->order_id,'role'=>$role]);
     }
     public function orderDelete($id){
         try{
@@ -209,7 +210,7 @@ class OrderController extends Controller
         }catch(Exception $e){
 
         }
-        return redirect()->route('orders');
+        return redirect()->route('orders.index');
     }
 }
 

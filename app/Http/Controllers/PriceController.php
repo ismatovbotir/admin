@@ -7,7 +7,7 @@ use Auth;
 use Illuminate\Support\Facades\Http;
 use App\Models\PriceList;
 use App\Models\Adines;
-class HomeController extends Controller
+class PriceController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -42,7 +42,7 @@ class HomeController extends Controller
         $price_code=Auth::user()->shop->price_code;
         $ware_code=Auth::user()->shop->ware_code;
         if ($barcode==null){
-            return redirect('price');
+            return redirect('price.index');
         }
         $adines=Adines::first();
         //dd($adines);
@@ -56,10 +56,10 @@ class HomeController extends Controller
         $res=$response->json();
         
 		 if($res["code"]==1){
-            return redirect('price');
+            return redirect('price.index');
         }else{
 
-            return view('item',["data"=>$res['data']]);
+            return view('price.item',["data"=>$res['data']]);
         }  
 
     }
@@ -81,7 +81,7 @@ class HomeController extends Controller
 
 
         ]);
-        return redirect('price');
+        return redirect('price.index');
 
 
 
@@ -89,7 +89,7 @@ class HomeController extends Controller
     public function dellitem(Request $request){
         $id=$request->input('id');
         $item=PriceList::where('id',$id)->delete();
-        return redirect('price');
+        return redirect('price.index');
 
     }
 	public function load1c(Request $request){

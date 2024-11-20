@@ -22,29 +22,31 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="{{route('price')}}" class="nk-menu-link">
+                                    <a href="{{route('price.index')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-bitcoin-cash"></em></span>
                                         <span class="nk-menu-text">Price</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="{{route('orders')}}" class="nk-menu-link">
+                                    <a href="{{route('orders.index')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-growth"></em></span>
                                         <span class="nk-menu-text">Order</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="{{route('orders')}}" class="nk-menu-link">
+                                    <a href="{{route('orders.index')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
                                         <span class="nk-menu-text">Collect</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="{{route('orders')}}" class="nk-menu-link">
+                                    <a href="{{route('orders.index')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
                                         <span class="nk-menu-text">Ready</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
+                               
+                                @if (Auth::user() && Auth::user()->role->name=='Admin')
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Administration</h6>
                                 </li><!-- .nk-menu-heading -->
@@ -92,6 +94,7 @@
                                     </ul><!-- .nk-menu-sub -->--}}
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item has-sub">
+                                @endif
                                {{-- <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
@@ -25,42 +25,53 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::get('/price', [HomeController::class, 'index'])->name('price');
-
-Route::get('/item', [HomeController::class, 'item'])->name('item');
-
-Route::get('/additem', [HomeController::class, 'additem'])->name('additem');
-
-Route::get('/dellitem', [HomeController::class, 'dellitem'])->name('dellitem');
+Route::get('/home', [PriceController::class, 'index'])->name('home');
 
 
-Route::get('/load1c',[HomeController::class, 'load1c'])->name('load1c');
+Route::group(['middleware'=>'auth','prefix'=>'price','as'=>'price.'],function(){
 
-Route::get('/orders',[OrderController::class,'orders'])->name('orders');
+    Route::get('', [PriceController::class, 'index'])->name('index');
+
+    Route::get('/item', [PriceController::class, 'item'])->name('item');
+
+    Route::get('/additem', [PriceController::class, 'additem'])->name('add.item');
+
+    Route::get('/dellitem', [PriceController::class, 'dellitem'])->name('dell.item');
+
+    Route::get('/load1c',[PriceController::class, 'load1c'])->name('load1c');
+});
 
 
+Route::group(['middleware'=>'auth','prefix'=>'orders','as'=>'orders.'],function(){
+    
+    Route::get('',[OrderController::class,'orders'])->name('index');
 
-Route::get('/order/{id}',[OrderController::class,'order'])->name('order');
+    Route::get('/create',[OrderController::class,'orderCreate'])->name('create');
 
-Route::get('/order/{id}/delete',[OrderController::class,'orderDelete'])->name('orderDelete');
+    Route::get('/edit/item/{id}',[OrderController::class,'orderEditItem'])->name('edit.item');
 
-Route::post('/order/{id}/item',[OrderController::class,'orderItem'])->name('orderItem');
+    Route::get('/{id}',[OrderController::class,'order'])->name('show');
 
-Route::post('/order/{id}/addItem',[OrderController::class,'orderAddItem'])->name('orderAddItem');
+    Route::get('/{id}/delete',[OrderController::class,'orderDelete'])->name('delete');
 
-Route::post('/order/{id}/checkItem',[OrderController::class,'checkItem'])->name('checkItem');
+    Route::post('/{id}/item',[OrderController::class,'orderItem'])->name('item');
 
-Route::post('/order/{id}/addCollectItem',[OrderController::class,'collectAddItem'])->name('collectAddItem');
+    Route::post('/{id}/add/item',[OrderController::class,'orderAddItem'])->name('add.item');
 
-Route::get('/orderCreate',[OrderController::class,'orderCreate'])->name('orderCreate');
+    Route::post('/{id}/check/item',[OrderController::class,'checkItem'])->name('check.item');
 
-Route::get('/orderStatus/{id}/{status}',[OrderController::class,'orderStatus'])->name('orderStatus');
+    Route::post('/{id}/addCollectItem',[OrderController::class,'collectAddItem'])->name('collect.add.Item');
 
-Route::get('/orderDeleteItem/{id}/{item}',[OrderController::class,'orderDeleteItem'])->name('orderDeleteItem');
+    
 
-Route::get('/orderEditItem/{id}',[OrderController::class,'orderEditItem'])->name('orderEditItem');
+    Route::get('/{id}/status/{status}',[OrderController::class,'orderStatus'])->name('status');
+
+    Route::get('/{id}/delete/{item}',[OrderController::class,'orderDeleteItem'])->name('delete.item');
+
+    
+});
+
+
 
 Route::get('/users',[UserController::class,'index'])->name('users.index');
 
@@ -81,6 +92,6 @@ Route::get('/shops/update',[ShopController::class,'update'])->name('shops.update
 
 Route::get('/adines',[AdinesController::class,'index'])->name('adines.index');
 
-Route::get('/monitoring',[MonitoringController::class,'index'])->name('monitoring');
+//Route::get('/monitoring',[MonitoringController::class,'index'])->name('monitoring');
 
-Route::get('/logout',[HomeController::class,'logout'])->name('logout');
+Route::get('/logout',[PriceController::class,'logout'])->name('logout');
