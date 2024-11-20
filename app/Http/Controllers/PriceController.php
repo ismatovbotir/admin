@@ -130,7 +130,7 @@ class PriceController extends Controller
                 }
                 return redirect()->route('price.index');
             } else {
-                return redirect()->route('price.index');
+                return redirect()->route('price.index')->withErrors(['1c connection error']);
             }
         }
     }

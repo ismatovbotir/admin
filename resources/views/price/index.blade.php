@@ -29,6 +29,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Maxsulot</th>
+                                <th scope="col">Miqdor</th>
                                 <th scope="col">Narx</th>
                             </tr>
                         </thead>
@@ -43,6 +44,7 @@
                                     </a>
                                 </th>
                                 <td>{{$tableItem->name}}</td>
+                                <td>{{$tableItem->qty}}</td>
                                 <td>{{$tableItem->price}}</td>
                             </tr>
                         @endforeach

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->integer('code');
             $table->string('name');
+            $table->integer('qty')->default(1);
             $table->string('barcode');
             $table->double('price',10,0)->nullable();
             $table->string('price_code')->nullable();
