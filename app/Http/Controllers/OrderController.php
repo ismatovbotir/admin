@@ -23,6 +23,7 @@ class OrderController extends Controller
         $user = Auth::user()->id;
         $shop = Auth::user()->shop->id;
         $role = Auth::user()->role->name;
+        $orders=[];
         if ($role == 'Order') {
 
             $orders = Order::withCount('items')->where('user_id', $user)->whereIn('status', ['new'])->orderBy('updated_at', 'desc')->get();
