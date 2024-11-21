@@ -24,7 +24,7 @@
                         <div class="col-12 d-flex justify-content-between">
                             <div class="col-4">
                                 <input type="text" disabled class="form-control" id="code" name="code" value="{{$data['code']}}" >  
-                                <input type="hidden" class="form-control" id="code" name="code" value="{{$data['code']}}" >    
+                                <input type="text" disabled class="form-control" id="stock"  value="{{$data['qty']}}" >    
                             </div>
                             <div class="col-7">
                                 @if ($role=='Order')
