@@ -225,7 +225,7 @@ class OrderController extends Controller
     public function orderDeleteItem($id, $item)
     {
         $item = OrderItem::where('id', $item)->delete();
-        return redirect()->route('order', ['id' => $id]);
+        return redirect()->route('orders.show', ['id' => $id]);
     }
     public function orderEditItem($id)
     {
