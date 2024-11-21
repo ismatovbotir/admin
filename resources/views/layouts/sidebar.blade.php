@@ -15,7 +15,7 @@
                     <div class="nk-sidebar-content">
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
-                                <li class="nk-menu-item active current-page">
+                                <li class="nk-menu-item {{ Request::is('monitoring') ? 'active current-page' : ''}} ">
                                     <a href="{{route('main')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-dashlite"></em></span>
                                         <span class="nk-menu-text">Monitoring</span>
