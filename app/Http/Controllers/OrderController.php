@@ -110,7 +110,7 @@ class OrderController extends Controller
             if ($res["code"] == 1) {
                 return back();
             } else {
-
+                dd($res["data"]);
                 return view('orders.orderItem', ['data' => $res['data'], 'id' => $id, 'role' => $role]);
             }
         }else{
