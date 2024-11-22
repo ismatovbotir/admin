@@ -34,12 +34,12 @@ class CollectController extends Controller
         return view('collects.collect', ['id'=>$id,'order' => $order, 'orderItems' => $orderItems, 'role' => $role]);
     }
 
-    public function orderEditItem($id)
+    public function collectEditItem($id)
     {
         $role = Auth::user()->role->name;
         $item = OrderItem::where('id', $id)->get();
         //dd($item[0]);
-        return view('orders.orderItem', ['data' => $item[0], 'id' => $item[0]->order_id, 'role' => $role]);
+        return view('collects.collectItem', ['data' => $item[0], 'id' => $item[0]->order_id, 'role' => $role]);
     }
 
     public function checkItem(Request $request, $id)
@@ -62,7 +62,7 @@ class CollectController extends Controller
             })->get();
         //return $orderItem->count();
         if ($orderItem->count() == 1) {
-            return view('orders.orderItem', ['data' => $orderItem[0], 'id' => $id, 'role' => $role]);
+            return view('collects.collectItem', ['data' => $orderItem[0], 'id' => $id, 'role' => $role]);
         } else {
             return back();
         }

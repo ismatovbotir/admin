@@ -77,7 +77,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'collects', 'as' => 'collects.
 
     Route::get('item/{id}/edit',[CollectController::class,'editItem'])->name('edit.item');
 
-    Route::post('/{id}/check/item', [OrderController::class, 'checkItem'])->name('check.item');
+    Route::post('/{id}/check/item', [CollectController::class, 'checkItem'])->name('check.item');
 
 
     Route::get('/{id}/status/{status}', [CollectController::class, 'collectStatus'])->name('status');

@@ -14,7 +14,7 @@
                         <div class="card-header d-flex justify-content-between">
                             <div class="d-block ">Сборка №: {{$order->id}}</div>
                             <div>
-                                <form action="{{route('orders.check.item',['id'=>$id])}}" class="row g-3" method="POST">
+                                <form action="{{route('collects.check.item',['id'=>$id])}}" class="row g-3" method="POST">
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" name="barcode" autofocus>
                                         <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
