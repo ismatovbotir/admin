@@ -14,9 +14,9 @@ class OrderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
-    public function orders()
+    public function index()
     {
 
 
@@ -24,12 +24,8 @@ class OrderController extends Controller
         $shop = Auth::user()->shop->id;
         $role = Auth::user()->role->name;
         $orders=[];
-        if ($role == 'Order') {
-
-            $orders = Order::withCount('items')->where('user_id', $user)->whereIn('status', ['new'])->orderBy('updated_at', 'desc')->get();
-        } elseif ($role == 'Collect') {
-            $orders = Order::withCount('items')->where('shop_id', $shop)->where('status', 'sent')->orderBy('created_at', 'desc')->get();
-        }
+        $orders = Order::withCount('items')->where('user_id', $user)->whereIn('status', ['new'])->orderBy('updated_at', 'desc')->get();
+       
         //return $orders;
         return view(
             'orders.index',

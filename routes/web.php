@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PriceController;
-use App\Http\Controllers\MainController;
+use App\Http\Controllers\CollectController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
@@ -44,7 +44,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'price', 'as' => 'price.'], fu
 
 Route::group(['middleware' => 'auth', 'prefix' => 'orders', 'as' => 'orders.'], function () {
 
-    Route::get('', [OrderController::class, 'orders'])->name('index');
+    Route::get('', [OrderController::class, 'index'])->name('index');
 
     Route::get('/create', [OrderController::class, 'orderCreate'])->name('create');
 
@@ -62,16 +62,27 @@ Route::group(['middleware' => 'auth', 'prefix' => 'orders', 'as' => 'orders.'], 
     Route::post('/{id}/add/item', [OrderController::class, 'orderAddItem'])->name('add.item');
 
     Route::post('/{id}/check/item', [OrderController::class, 'checkItem'])->name('check.item');
-
-    Route::post('/{id}/addCollectItem', [OrderController::class, 'collectAddItem'])->name('collect.add.item');
-
-
-
+  
     Route::get('/{id}/status/{status}', [OrderController::class, 'orderStatus'])->name('status');
 
     Route::get('/{id}/delete/{item}', [OrderController::class, 'orderDeleteItem'])->name('delete.item');
 });
 
+
+Route::group(['middleware' => 'auth', 'prefix' => 'collects', 'as' => 'collect.'], function () {
+
+    Route::get('', [CollectController::class, 'index'])->name('index');
+
+    Route::get('/{id}', [CollectController::class, 'collect'])->name('show');
+
+    Route::get('item/{id}/edit',[CollectController::class,'editItem'])->name('edit.item');
+
+    Route::post('/{id}/check/item', [OrderController::class, 'checkItem'])->name('check.item');
+
+
+    Route::get('/{id}/status/{status}', [CollectController::class, 'collectStatus'])->name('status');
+
+});
 
 Route::group(['middleware' => 'auth', 'prefix' => 'users', 'as' => 'users.'], function () {
     

@@ -39,7 +39,7 @@
                                 @endif
                                 @if (Auth::user()->role->name=='Admin' ||  Auth::user()->role->name=='Collect')
                                 <li class="nk-menu-item">
-                                    <a href="{{route('orders.index')}}" class="nk-menu-link">
+                                    <a href="{{route('collects.index')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-list"></em></span>
                                         <span class="nk-menu-text">Collect</span>
                                     </a>
