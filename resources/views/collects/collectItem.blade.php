@@ -13,7 +13,7 @@
 
                 <div class="card-body">
                     
-                    <form method="post" action="{{route('orders.add.item',['id'=>$id])}}" class="row row-cols-lg-auto g-3 align-items-center"  >
+                    <form method="post" action="{{route('collects.collect.item',['id'=>$id])}}" class="row row-cols-lg-auto g-3 align-items-center"  >
                     
                         <div class="col-12">
                             <h2>{{$data['name']}}</h2>

@@ -34,7 +34,7 @@ class CollectController extends Controller
         return view('collects.collect', ['id'=>$id,'order' => $order, 'orderItems' => $orderItems, 'role' => $role]);
     }
 
-    public function collectEditItem($id)
+    public function editItem($id)
     {
         $role = Auth::user()->role->name;
         $item = OrderItem::where('id', $id)->get();
@@ -68,7 +68,26 @@ class CollectController extends Controller
         }
     }
 
+    public function collectAddItem(Request $request, $id)
+    {
+        //return $request->all();
+        $code = $request->input('code');
+        $qty = $request->input('qty');
+        //$name=$request->input('name');
+        //$barcode=$request->input('barcode');
+        if ($qty == 0) {
+            return redirect()->route('cllects.show', ['id' => $id]);
+        }
+        $itemInOrder = OrderItem::where('order_id', $id)->where("code", $code)->get();
+        if ($itemInOrder->count() == 0) {
 
+            return back();
+        } else {
+            OrderItem::where('id', $itemInOrder[0]->id)->update(["qty_done" => $qty + $itemInOrder[0]->qty_done]);
+        }
+        //return $orderItem;
+        return redirect()->route('collects.show', ['id' => $id]);
+    }
 
 
 
