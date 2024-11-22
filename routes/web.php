@@ -69,7 +69,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'orders', 'as' => 'orders.'], 
 });
 
 
-Route::group(['middleware' => 'auth', 'prefix' => 'collects', 'as' => 'collect.'], function () {
+Route::group(['middleware' => 'auth', 'prefix' => 'collects', 'as' => 'collects.'], function () {
 
     Route::get('', [CollectController::class, 'index'])->name('index');
 
