@@ -34,7 +34,7 @@
                         </div>
                         <div class="d-flex justify-content-around">
 
-                            <a type="button" class="btn btn-danger" href="{{route('orders.show',['id'=>$id])}}">
+                            <a type="button" class="btn btn-danger" href="{{route('collects.show',['id'=>$id])}}">
                                 Cancel
                             </a>
                             <button type="submit" class="btn btn-success">

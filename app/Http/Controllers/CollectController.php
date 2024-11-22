@@ -68,7 +68,7 @@ class CollectController extends Controller
         }
     }
 
-    public function collectAddItem(Request $request, $id)
+    public function collectItem(Request $request, $id)
     {
         //return $request->all();
         $code = $request->input('code');
