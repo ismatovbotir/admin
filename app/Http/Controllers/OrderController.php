@@ -224,40 +224,7 @@ class OrderController extends Controller
         $item = OrderItem::where('id', $item)->delete();
         return redirect()->route('orders.show', ['id' => $id]);
     }
-    public function orderEditItem($i
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    d)
+    public function orderEditItem($id)
     {
         $role = Auth::user()->role->name;
         $item = OrderItem::where('id', $id)->get();
