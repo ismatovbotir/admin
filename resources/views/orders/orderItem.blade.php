@@ -12,11 +12,9 @@
                 </div>
 
                 <div class="card-body">
-                    @if ($role=='Order')
+                    
                     <form method="post" action="{{route('orders.add.item',['id'=>$id])}}" class="row row-cols-lg-auto g-3 align-items-center"  >
-                    @elseif($role=='Collect')
-                    <form method="post" action="{{route('collect.add.item',['id'=>$id])}}" class="row row-cols-lg-auto g-3 align-items-center"  >
-                    @endif
+                    
                         <div class="col-12">
                             <h2>{{$data['name']}}</h2>
                            
@@ -28,11 +26,8 @@
                                 <input type="hidden" class="form-control" id="code" name="code" value="{{$data['code']}}" >      
                             </div>
                             <div class="col-7">
-                                @if ($role=='Order')
+                                
                                 <input type="number" class="form-control" id="qty" name="qty" placeholder="{{$data['qty']}}" autofocus>
-                                @elseif($role=='Collect')
-                                <input type="number" class="form-control" id="qty" name="qty" placeholder="{{$data['qty']}}-{{$data['qty_done']}}" value="{{$data['qty']}}" autofocus>
-                                @endif
                                 <input type="hidden"  name="name" value="{{$data['name']}}">
                                 <input type="hidden"  name="barcode" value="{{$data['barcode']}}">   
                             </div> 

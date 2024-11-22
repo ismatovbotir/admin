@@ -228,7 +228,7 @@ class OrderController extends Controller
     {
         $role = Auth::user()->role->name;
         $item = OrderItem::where('id', $id)->get();
-        //dd($item[0]);
+        dd($item[0]);
         return view('orders.orderItem', ['data' => $item[0], 'id' => $item[0]->order_id, 'role' => $role]);
     }
     public function orderDelete($id)
