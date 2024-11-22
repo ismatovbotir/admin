@@ -90,7 +90,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'ready', 'as' => 'ready.'], fu
 
     Route::get('', [ReadyController::class, 'index'])->name('index');
 
-    Route::get('/{id}', [ReadyController::class, 'collect'])->name('show');
+    Route::get('/{id}', [ReadyController::class, 'show'])->name('show');
     
 });
 
