@@ -62,7 +62,7 @@ class CollectController extends Controller
             })->get();
         //return $orderItem->count();
         if ($orderItem->count() == 1) {
-            return view('collects.collectItem', ['data' => $orderItem[0], 'id' => $id, 'role' => $role]);
+            return redirect()->route('collects.show',['id'=>$id]); //view('collects.collectItem', ['data' => $orderItem[0], 'id' => $id, 'role' => $role]);
         } else {
             return back();
         }
