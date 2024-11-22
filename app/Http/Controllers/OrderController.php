@@ -90,7 +90,8 @@ class OrderController extends Controller
         }
         // return $request->all();
         $price_code = Auth::user()->shop->price_code;
-        $ware_code = Auth::user()->shop->ware_code;
+        $ware_code = Auth::user()->shop->shop_code;
+
         if ($barcode == null) {
             return back();
         }
