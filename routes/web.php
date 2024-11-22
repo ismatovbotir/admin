@@ -63,7 +63,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'orders', 'as' => 'orders.'], 
 
     Route::post('/{id}/check/item', [OrderController::class, 'checkItem'])->name('check.item');
 
-    Route::post('/{id}/addCollectItem', [OrderController::class, 'collectAddItem'])->name('collect.add.Item');
+    Route::post('/{id}/addCollectItem', [OrderController::class, 'collectAddItem'])->name('collect.add.item');
 
 
 
