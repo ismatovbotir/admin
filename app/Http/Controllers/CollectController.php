@@ -62,7 +62,7 @@ class CollectController extends Controller
             })->get();
         //return $orderItem->count();
         if ($orderItem->count() == 1) {
-            return redirect()->route('collects.show',['id'=>$id]); //view('collects.collectItem', ['data' => $orderItem[0], 'id' => $id, 'role' => $role]);
+            return redirect()->route('collects.edit.item',['id'=>$orderItem[0]->id]); //view('collects.collectItem', ['data' => $orderItem[0], 'id' => $id, 'role' => $role]);
         } else {
             return back();
         }
@@ -76,7 +76,7 @@ class CollectController extends Controller
         //$name=$request->input('name');
         //$barcode=$request->input('barcode');
         if ($qty == 0) {
-            return redirect()->route('cllects.show', ['id' => $id]);
+            return redirect()->route('collects.show', ['id' => $id]);
         }
         $itemInOrder = OrderItem::where('order_id', $id)->where("code", $code)->get();
         if ($itemInOrder->count() == 0) {
