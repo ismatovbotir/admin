@@ -56,10 +56,10 @@ class OrderController extends Controller
     public function order($id)
     {
         $role = Auth::user()->role->name;
-
+        $order=Order::where('id',$id)->first();    
         $orderItems = OrderItem::where('order_id', $id)->get();
         //dd('order');
-        return view('orders.order', ['id' => $id, 'orderItems' => $orderItems, 'role' => $role]);
+        return view('orders.order', ['order' => $order, 'orderItems' => $orderItems, 'role' => $role]);
     }
 
     public function orderCreate()

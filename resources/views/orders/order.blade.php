@@ -12,7 +12,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
-                            <div class="d-block ">Заказ №: {{$id}}</div>
+                            <div class="d-block ">Заказ №: {{$order->id}}</div>
                             <div>
                                 @if($role=='Order')
                                 <form action="{{route('orders.item',['id'=>$id])}}" class="row g-3" method="POST">
