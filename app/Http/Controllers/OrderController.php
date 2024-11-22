@@ -57,7 +57,7 @@ class OrderController extends Controller
     {
         $role = Auth::user()->role->name;
         $order=Order::where('id',$id)->first();    
-        dd($order);
+        //dd($order);
         $orderItems = OrderItem::where('order_id', $id)->get();
         //dd('order');
         return view('orders.order', ['id'=>$id,'order' => $order, 'orderItems' => $orderItems, 'role' => $role]);
