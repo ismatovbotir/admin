@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AdinesController;
+use App\Http\Controllers\ReadyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,6 +86,16 @@ Route::group(['middleware' => 'auth', 'prefix' => 'collects', 'as' => 'collects.
 
 });
 
+Route::group(['middleware' => 'auth', 'prefix' => 'ready', 'as' => 'ready.'], function () {
+
+    Route::get('', [ReadyController::class, 'index'])->name('index');
+
+    Route::get('/{id}', [ReadyController::class, 'collect'])->name('show');
+    
+});
+
+
+
 Route::group(['middleware' => 'auth', 'prefix' => 'users', 'as' => 'users.'], function () {
     
     Route::get('', [UserController::class, 'index'])->name('index');
@@ -99,6 +110,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'users', 'as' => 'users.'], fu
 
    
 });
+
+
 
 Route::get('/shops', [ShopController::class, 'index'])->name('shops.index');
 

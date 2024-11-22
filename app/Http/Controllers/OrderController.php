@@ -33,22 +33,7 @@ class OrderController extends Controller
         );
     }
 
-    public function readyorders()
-    {
-
-
-        $user = Auth::user()->id;
-        $shop = Auth::user()->shop->id;
-        $role = Auth::user()->role->name;
-
-        $orders = Order::withCount('items')->where('user_id', $user)->whereIn('status', ['ready'])->orderBy('updated_at', 'desc')->get();
-        //return $orders;
-        return view(
-            'orders.index',
-            ['orders' => $orders, 'author' => Auth::user()->name, 'role' => $role]
-        );
-    }
-
+    
     public function order($id)
     {
         $role = Auth::user()->role->name;
@@ -178,26 +163,7 @@ class OrderController extends Controller
         return redirect()->route('orders.show', ['id' => $id]);
     }
 
-    public function collectAddItem(Request $request, $id)
-    {
-        //return $request->all();
-        $code = $request->input('code');
-        $qty = $request->input('qty');
-        //$name=$request->input('name');
-        //$barcode=$request->input('barcode');
-        if ($qty == 0) {
-            return redirect()->route('orders.show', ['id' => $id]);
-        }
-        $itemInOrder = OrderItem::where('order_id', $id)->where("code", $code)->get();
-        if ($itemInOrder->count() == 0) {
-
-            return back();
-        } else {
-            OrderItem::where('id', $itemInOrder[0]->id)->update(["qty_done" => $qty + $itemInOrder[0]->qty_done]);
-        }
-        //return $orderItem;
-        return redirect()->route('orders.show', ['id' => $id]);
-    }
+   
 
     public function orderStatus($id, $status)
     {
