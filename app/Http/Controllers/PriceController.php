@@ -57,7 +57,7 @@ class PriceController extends Controller
         ])->post($adines->adress . 'item?code=' . $price_code . '&barcode=' . $barcode . '&ware=' . $ware_code);
         if ($response->successful()) {
             $res = $response->json();
-
+            dd($res);    
             if ($res["code"] == 1) {
                 return redirect('price.index');
             } else {
