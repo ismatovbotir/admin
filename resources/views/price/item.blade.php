@@ -15,7 +15,7 @@
                     <form action="{{route('price.add.item')}}" method="GET">
                         <h1 class="card-title">{{$data['price']}}</h1>
                         <p class="card-text">Etiketkadagi narx bilan tenglashtirib koring va</p>
-                        <input type="disabled" name="code" value="{{$data['qty']}}" hidden>
+                        <input type="disabled" name="code" value="{{$data['qty']}}" >
                         <input type="text" name="code" value="{{$data['code']}}" hidden>
                         <input type="text" name="price" value="{{$data['price']}}" hidden>
                         <input type="text" name="barcode" value="{{$data['barcode']}}" hidden>
