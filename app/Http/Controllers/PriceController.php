@@ -42,7 +42,7 @@ class PriceController extends Controller
     {
         $barcode = $request->input('barcode');
         $price_code = Auth::user()->shop->price_code;
-        $ware_code = Auth::user()->shop->ware_code;
+        $ware_code = Auth::user()->shop->shop_code;
         if ($barcode == null) {
             return redirect()->route('price.index');
         }
