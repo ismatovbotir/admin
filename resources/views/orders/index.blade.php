@@ -90,7 +90,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{$orders->list()}}
+                    {{$orders->links()}}
                 </div>
                 </div>
             </div>
