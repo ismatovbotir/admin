@@ -25,7 +25,7 @@
                                                 <label class="form-label" for="default-01">Code:</label>
                                                 <div class="form-control-wrap">
                                                     <input type="text" class="form-control" id="default-01" value="{{$data['code']}}" disabled>
-                                                    <input type="text" class="form-control" name="code" value="{{$data['code']}}">
+                                                    <input type="hidden" class="form-control" name="code" value="{{$data['code']}}">
                                                 </div>
                                             </div>
                                         </div>
