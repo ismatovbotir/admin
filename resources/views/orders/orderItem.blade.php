@@ -20,7 +20,7 @@
                                 <div class="preview-block">
                                     <span class="preview-title-lg overline-title">{{$data['name']}}</span>
                                     <div class="row gy-4">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label class="form-label" for="default-01">Code:</label>
                                                 <div class="form-control-wrap">
@@ -29,7 +29,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label class="form-label" for="default-05">Stock:</label>
                                                 <div class="form-control-wrap">
@@ -38,7 +38,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label class="form-label" for="default-03">Qty:</label>
                                                 <div class="form-control-wrap">
