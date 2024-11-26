@@ -10,6 +10,7 @@ use App\Models\OrderItem;
 use App\Models\Adines;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -25,8 +26,8 @@ class OrderController extends Controller
         $shop = Auth::user()->shop->id;
         $role = Auth::user()->role->name;
         $orders=[];
-        $orders = Order::withCount('items')->where('user_id', $user)->whereIn('status', ['new'])->orderBy('updated_at', 'desc')->get();
-       
+        $orders = Order::withCount('items')->where('user_id', $user)->whereDate('created_at',Carbon::today())->whereIn('status', ['new'])->orderBy('updated_at', 'desc')->get();
+        dd($orders);
         //return $orders;
         return view(
             'orders.index',
