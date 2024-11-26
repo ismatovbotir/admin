@@ -51,7 +51,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label class="form-label" for="default-textarea">Comment</label>
                                                 <div class="form-control-wrap">
