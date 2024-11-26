@@ -90,6 +90,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{$orders->list()}}
                 </div>
                 </div>
             </div>
