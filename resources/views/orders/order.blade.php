@@ -55,6 +55,8 @@
                                             <th scope="col">Код</th>
                                             <th scope="col">Наименование</th>
                                             <th scope="col">К-во</th>
+                                            <th scope="col">Коммент</th>
+                                            
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -72,6 +74,14 @@
                                                 {{$orderItem['qty']}}
                                                 @if($role!=='order')
                                                 -{{$orderItem['qty_done']}}
+                                                @endif
+
+
+                                            </td>
+                                            <td>
+                                               
+                                                @if(count($orderItem['comments'])>0)
+                                                {{$orderItem['comments'][0]['comment']}}
                                                 @endif
 
 

@@ -41,7 +41,7 @@ class OrderController extends Controller
         $order=Order::where('id',$id)->first();    
         //dd($order);
         $orderItems = OrderItem::with('comments')->where('order_id', $id)->get();
-        dd( $orderItems );
+        //dd( $orderItems );
         return view('orders.order', ['id'=>$id,'order' => $order, 'orderItems' => $orderItems, 'role' => $role]);
     }
 
