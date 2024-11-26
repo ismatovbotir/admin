@@ -138,6 +138,7 @@ class OrderController extends Controller
         $qty = $request->input('qty');
         $name = $request->input('name');
         $barcode = $request->input('barcode');
+        $comment=$request->input('comment');
         if ($qty == 0) {
             return redirect()->route('order', ['id' => $id]);
         }
@@ -155,8 +156,9 @@ class OrderController extends Controller
                 ]
             );
         } else {
-            OrderItem::where('id', $itemInOrder[0]->id)->update(["qty" => $qty + $itemInOrder[0]->qty]);
+            $orderItem = OrderItem::where('id', $itemInOrder[0]->id)->update(["qty" => $qty + $itemInOrder[0]->qty]);
         }
+        dd($orderItem);
         //return $orderItem;
 
 
