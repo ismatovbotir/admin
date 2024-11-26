@@ -156,7 +156,8 @@ class OrderController extends Controller
                 ]
             );
         } else {
-            $orderItem = OrderItem::where('id', $itemInOrder[0]->id)->update(["qty" => $qty + $itemInOrder[0]->qty]);
+            OrderItem::where('id', $itemInOrder[0]->id)->update(["qty" => $qty + $itemInOrder[0]->qty]);
+            $orderItem=OrderItem::where('id', $itemInOrder[0]->id)->get();
         }
         dd($orderItem);
         //return $orderItem;
