@@ -160,7 +160,8 @@ class OrderController extends Controller
             OrderItem::where('id', $itemInOrder[0]->id)->update(["qty" => $qty + $itemInOrder[0]->qty]);
             $orderItem=OrderItem::where('id', $itemInOrder[0]->id)->first();
         }
-        if ($comment!==""){
+        if (strlen($comment)>0){
+            //dd(comment);
             Comment::create(
                 [
                     "user_id" => Auth::user()->id,
