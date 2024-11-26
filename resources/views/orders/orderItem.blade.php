@@ -61,7 +61,7 @@
                                         </div>
 
                                         <div class="col-sm-6">
-                                            <div class="form-group">
+                                            <div class="form-group d-flex justify-content-around">
                                                 <a type="button" class="btn btn-dim btn-outline-danger" href="{{route('orders.show',['id'=>$id])}}">
                                                     Cancel
                                                 </a>
