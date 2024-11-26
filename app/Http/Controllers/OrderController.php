@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderStatus;
 use App\Models\OrderItem;
 use App\Models\Adines;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
@@ -159,7 +160,17 @@ class OrderController extends Controller
             OrderItem::where('id', $itemInOrder[0]->id)->update(["qty" => $qty + $itemInOrder[0]->qty]);
             $orderItem=OrderItem::where('id', $itemInOrder[0]->id)->first();
         }
-        dd($orderItem);
+        if ($comment!==""){
+            Comment::create(
+                [
+                    "user_id" => Auth::user()->id,
+                    "order_item_id" => $orderItem->id,
+                    "comment" => $comment
+                ]
+            );
+
+        }
+        //dd($orderItem);
         //return $orderItem;
 
 
