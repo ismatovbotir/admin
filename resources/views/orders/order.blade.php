@@ -81,7 +81,7 @@
                                             <td>
                                                
                                                 @if(count($orderItem['comments'])>0)
-                                                {{$orderItem['comments'][0]['comment']}}
+                                                {{$orderItem['comments'][count($orderItem['comments'])-1]['comment']}}
                                                 @endif
 
 
