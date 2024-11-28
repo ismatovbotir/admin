@@ -39,7 +39,7 @@
                         </thead>
                         <tbody>
                             @foreach($orders as $order)
-                            @if ($order('status')=='ready')
+                            @if ($order['status']=='ready')
                             <tr  class="table-success">
                             @else
                             <tr  class="table-light">
