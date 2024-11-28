@@ -45,6 +45,17 @@ class OrderController extends Controller
         //dd( $orderItems );
         return view('orders.order', ['id'=>$id,'order' => $order, 'orderItems' => $orderItems, 'role' => $role]);
     }
+     
+    public function view($id)
+    {
+        $role = Auth::user()->role->name;
+        $order=Order::where('id',$id)->first();    
+        //dd($order);
+        $orderItems = OrderItem::with('comments')->where('order_id', $id)->get();
+        //dd( $orderItems );
+        return view('orders.view', ['id'=>$id,'order' => $order, 'orderItems' => $orderItems, 'role' => $role]);
+    }
+
 
     public function orderCreate()
     {

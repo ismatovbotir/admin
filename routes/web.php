@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'orders', 'as' => 'orders.'], 
     Route::get('/edit/item/{id}', [OrderController::class, 'orderEditItem'])->name('edit.item');
 
     Route::get('/{id}', [OrderController::class, 'order'])->name('show');
+    Route::get('/{id}/view', [OrderController::class, 'view'])->name('view');
 
     Route::get('/{id}/delete', [OrderController::class, 'orderDelete'])->name('delete');
 
