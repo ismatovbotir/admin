@@ -27,7 +27,7 @@
 
                 <div class="card-body">
                 <div class="table-responsive">      
-                <table class="table table-striped ">
+                <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -39,7 +39,12 @@
                         </thead>
                         <tbody>
                             @foreach($orders as $order)
-                            <tr>
+                            @if ($order('status')=='ready')
+                            <tr  class="table-success">
+                            @else
+                            <tr  class="table-light">
+                            @endif
+                            
                                 <th scope="row">{{$order['id']}}</th>
                                 <td>{{$order["created_at"]}}</td>
                                 <td>{{$author}}</td>

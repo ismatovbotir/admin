@@ -26,7 +26,7 @@ class OrderController extends Controller
         $shop = Auth::user()->shop->id;
         $role = Auth::user()->role->name;
         $orders=[];
-        $orders = Order::withCount('items')->where('user_id', $user)->whereDate('created_at',Carbon::today())->whereIn('status', ['new'])->orderBy('updated_at', 'desc')->paginate(20);
+        $orders = Order::withCount('items')->where('user_id', $user)->whereDate('created_at',Carbon::today())->whereIn('status', ['new','ready'])->orderBy('updated_at', 'desc')->paginate(20);
         //dd($orders);
         //return $orders;
         return view(
