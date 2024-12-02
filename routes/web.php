@@ -96,7 +96,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'ready', 'as' => 'ready.'], fu
 });
 
 
-
+//user 
 Route::group(['middleware' => 'auth', 'prefix' => 'users', 'as' => 'users.'], function () {
     
     Route::get('', [UserController::class, 'index'])->name('index');
@@ -108,6 +108,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'users', 'as' => 'users.'], fu
     Route::get('/{id}', [UserController::class, 'show'])->name('show');
 
     Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
+
+    Route::post('/{user}/update',[UserController::class,'update'])->name('update');
 
    
 });

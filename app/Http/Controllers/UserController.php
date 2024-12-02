@@ -15,7 +15,7 @@ class UserController extends Controller
 {
     public function index(){
         $title='Users';
-        $users=User::with('role')->with('shop')->get();
+        $users=User::where("id",">",1)->with('role')->with('shop')->get();
         //dd($users);
         return view('users.index',compact('title','users'));
     }
@@ -28,13 +28,16 @@ class UserController extends Controller
         //dd($users);
         return view('users.add',compact('title','roles','shops'));
     }
-    public function edit(){
-        $title='User Edit';
-        return view('users.edit',compact('title'));
+    public function edit($id){
+        $user=User::find($id);
+        $title='New User';
+        $roles=Role::where('id','!=',1)->get();
+        $shops=Shop::get();
+        return view('users.edit',compact('user','title','title','roles','shops'));
     }
-    public function show(){
-        $title='User Edit';
-        return view('users.show',compact('title'));
+    public function show(User $user){
+        $title='User Show';
+        return view('users.show',compact('title','title','roles','shops'));
     }
 
     public function store(UserRequest $request){
@@ -61,4 +64,17 @@ class UserController extends Controller
 
         return redirect()->route('users.index');
     }
+    public function update(Request $request,User $user){
+        $user->name=$request->input('name');
+        $user->email=$request->input('email');
+        $user->password=Hash::make($request->input('password'));
+        $user->role_id=$request->input('role');
+        $user->shop_id=$request->input('shop');
+
+        $user->save();
+        return to_route('users.index');
+
+    }
+
+
 }
