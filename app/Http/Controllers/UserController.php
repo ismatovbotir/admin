@@ -30,7 +30,7 @@ class UserController extends Controller
     }
     public function edit($id){
         $user=User::find($id);
-        $title='New User';
+        $title='Edit User';
         $roles=Role::where('id','!=',1)->get();
         $shops=Shop::get();
         return view('users.edit',compact('user','title','title','roles','shops'));
